@@ -1,0 +1,174 @@
+/* Reset and Base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  body {
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+    transition: background 0.3s ease, color 0.3s ease;
+  }
+  
+  .light-theme {
+    --bg-color: #ffffff;
+    --text-color: #222;
+    --panel-color: #f0f0f0;
+  }
+  
+  .dark-theme {
+    --bg-color: #1e1e1e;
+    --text-color: #ffffff;
+    --panel-color: #333333;
+  }
+  
+  /* Left Panel */
+  .left-panel {
+    width: 20%;
+    background-color: var(--panel-color);
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    border-right: 1px solid #ccc;
+    overflow-y: auto;
+  }
+  
+  .timer {
+    text-align: center;
+  }
+  
+  .timer h1 {
+    font-size: 60px;
+    margin-bottom: 20px;
+  }
+  
+  .timer-buttons button {
+    margin: 2px;
+    padding: 5px 10px;
+    background: #00b894;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  
+  .timer-buttons button:hover {
+    background: #019875;
+  }
+  
+  .tasks {
+    margin-top: 10px;
+  }
+  
+  .tasks input {
+    width: 50%;
+    padding: 5px;
+    margin-right: 0px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding-top: 3px;
+  }
+  
+  .tasks button {
+    padding: 5px 10px;
+    background: #0984e3;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  
+  .tasks button:hover {
+    background: #0759a0;
+  }
+  
+  #goalList {
+    margin-top: 20px;
+    list-style: none;
+  }
+  
+  #goalList li {
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 8px;
+    margin-bottom: 10px;
+    cursor: pointer;
+  }
+  
+  #goalList li.completed {
+    text-decoration: line-through;
+    background: #d3f9d8;
+    color: #27ae60;
+  }
+  
+  /* Right Panel */
+  .right-panel {
+    flex: 1;
+    position: relative;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    overflow: hidden;
+  }
+  
+  .notes-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    padding: 10px 15px;
+    background: #6c63ff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    z-index: 10;
+    cursor: pointer;
+  }
+  
+  .notes-button:hover {
+    background: #5548c8;
+  }
+  
+  .theme-toggle {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px;
+    background: #00cec9;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    z-index: 10;
+    cursor: pointer;
+  }
+  
+  .theme-toggle:hover {
+    background: #019875;
+  }
+  
+  .content-area {
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+  
+  #bgVideo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  
+  .notes {
+    padding: 50px;
+    overflow-y: auto;
+    height: 100%;
+  }
+  
+  .notes ul {
+    margin-top: 20px;
+    list-style: disc inside;
+  }
+  
