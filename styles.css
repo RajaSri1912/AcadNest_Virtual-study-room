@@ -1,0 +1,150 @@
+/* Add to your existing styles.css */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to right, #43cea2, #185a9d);
+    color: #333;
+}
+
+header {
+    text-align: center;
+    padding: 20px;
+    color: #fff;
+}
+
+.container {
+    display: flex;
+    max-width: 1200px;
+    margin: 0 auto;
+    min-height: 80vh;
+}
+
+/* Left sidebar styling */
+.subjects-sidebar {
+    width: 30%;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    margin-right: 20px;
+}
+
+.subject-card {
+    display: flex;
+    align-items: center;
+    background: white;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.subject-number {
+    width: 40px;
+    height: 40px;
+    background: #3498db;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    margin-right: 15px;
+}
+
+.subject-info {
+    flex: 1;
+}
+
+.subject-info h3 {
+    margin: 0 0 10px 0;
+}
+
+.quiz-btn {
+    background: #2ecc71;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+.quiz-btn:hover {
+    background: #27ae60;
+}
+
+/* Quiz container styling */
+.quiz-container {
+    flex: 1;
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+#welcome-screen, #quiz-screen, #results-screen {
+    padding: 15px;
+}
+
+.question-item {
+    margin-bottom: 25px;
+    background: #f9f9f9;
+    padding: 15px;
+    border-radius: 8px;
+}
+
+.question-text {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.options-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.option-item {
+    padding: 10px;
+    margin: 5px 0;
+    background: #eee;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.option-item:hover {
+    background: #ddd;
+}
+
+.option-item.selected {
+    background: #3498db;
+    color: white;
+}
+
+.submit-btn {
+    background: #e74c3c;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    display: block;
+    margin: 20px auto;
+    transition: background 0.3s;
+}
+
+.submit-btn:hover {
+    background: #c0392b;
+}
+
+#score-display {
+    font-size: 24px;
+    text-align: center;
+    margin: 30px 0;
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 8px;
+}

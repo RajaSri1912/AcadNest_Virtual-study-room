@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Focus Mode - Study Room</title>
+  <link rel="stylesheet" href="css/focusmode.css">
+  <script src="https://unpkg.com/feather-icons"></script> <!-- For Eye Icon -->
+</head>
+<body class="light-theme">
+
+  <div class="left-panel">
+    <div class="timer">
+      <h1 id="timerDisplay">25:00</h1>
+      <div class="timer-buttons">
+        <button onclick="startTimer()">Start</button>
+        <button onclick="pauseTimer()">Pause</button>
+        <button onclick="resetTimer()">Reset</button>
+      </div>
+    </div>
+
+    <div class="tasks">
+      <h2>Tasks</h2>
+      <input type="text" id="goalInput" placeholder="Type a task...">
+      <button onclick="addGoal()">Add Task</button>
+      <ul id="goalList">
+        <!-- tasks will be listed here -->
+      </ul>
+      <div id="progressDisplay" style="margin-top: 10px; font-weight: bold;"></div> <!-- PROGRESS IS DISPLAYED HERE -->
+    </div>
+    
+  </div>
+
+  <div class="right-panel">
+    <button class="notes-button" onclick="viewNotes()">View Notes</button>
+    <div class="content-area" id="contentArea">
+      <video autoplay muted loop id="bgVideo">
+        <source src="images/video.mp4" type="video/mp4">
+        Your browser does not support HTML5 video.
+      </video>
+
+      <div class="notes" id="notes" style="display:none;">
+        <object class="pdf" 
+        data=
+"https://media.geeksforgeeks.org/wp-content/cdn-uploads/20210101201653/PDF.pdf"
+        width="800"
+        height="500">
+</object>
+      </div>
+    </div>
+
+    <button class="theme-toggle" onclick="toggleTheme()">
+      <i data-feather="eye"></i>
+    </button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

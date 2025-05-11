@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Virtual Study Room - AI Chat</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #e1f5fe;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px;
+      margin: 0;
+      /* height: 100vh; */
+      justify-content: center;
+    }
+
+    h1 {
+      color: #333;
+      font-size: 32px;
+      margin-bottom: 20px;
+      text-align: center;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+      margin-top:0px;
+      padding-top:0px;
+    }
+
+    #chatbox {
+      width: 100%;
+      max-width: 400px;
+      height: 440px;
+      background: #ffffff;
+      border-radius: 15px;
+      padding: 15px;
+      border: 1px solid #ddd;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      font-size: 16px;
+      color: #333;
+    }
+
+    #messages {
+      flex: 1;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      padding-right: 5px;
+    }
+
+    .user {
+      text-align: right;
+      background-color: #ffd1f8;
+      padding: 8px;
+      border-radius: 20px;
+      max-width: 70%;
+      margin-left: auto;
+      animation: fadeIn 0.5s ease-in-out;
+    }
+
+    .bot {
+      text-align: left;
+      background-color: #e3f9e5;
+      padding: 8px;
+      border-radius: 20px;
+      max-width: 70%;
+      animation: fadeIn 0.5s ease-in-out;
+    }
+
+    #inputArea {
+      display: flex;
+      margin-top: 10px;
+    }
+
+    #userInput {
+      flex: 1;
+      padding: 12px 15px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 20px 0 0 20px;
+      outline: none;
+      background-color: #f1f1f1;
+      color: #333;
+    }
+
+    #sendButton {
+      padding: 12px 20px;
+      font-size: 16px;
+      border: none;
+      background-color: #4CAF50;
+      color: white;
+      cursor: pointer;
+      border-radius: 0 20px 20px 0;
+      transition: background-color 0.3s ease;
+    }
+
+    #sendButton:hover {
+      background-color: #45a049;
+    }
+
+    #sendButton:focus {
+      outline: none;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+  <h1>Talk with Study Buddy 🤖</h1>
+  
+  <div id="chatbox">
+    <div id="messages"></div> <!-- messages will be here -->
+
+    <div id="inputArea">
+      <input type="text" id="userInput" placeholder="Type your question..." />
+      <button id="sendButton">Send</button>
+    </div>
+  </div>
+
+  <script type="module">
+    import { GoogleGenerativeAI } from "https://esm.sh/@google/generative-ai";
+
+    const genAI = new GoogleGenerativeAI("IzaSyDgqwWtFAr3ReFJq-mqTJBl-nl7t0uCGVc");
+
+    const generationConfig = {
+      temperature: 0.7,
+      topK: 1,
+      topP: 1,
+      maxOutputTokens: 1000,
+    };
+
+    const chatbox = document.getElementById("chatbox");
+    const messages = document.getElementById("messages");
+    const userInput = document.getElementById("userInput");
+    const sendButton = document.getElementById("sendButton");
+
+    sendButton.addEventListener("click", sendMessage);
+    userInput.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        sendMessage();
+      }
+    });
+
+    function appendMessage(message, sender) {
+      const div = document.createElement("div");
+      div.className = sender;
+      div.innerText = message;
+      messages.appendChild(div);
+      messages.scrollTop = messages.scrollHeight;
+    }
+
+    async function sendMessage() {
+      const message = userInput.value.trim();
+      if (!message) return;
+
+      appendMessage(message, "user");
+      userInput.value = "";
+
+      try {
+        const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
+
+        const parts = {
+          text: message
+        };
+
+        const result = await model.generateContent({
+          contents: [{ role: "user", parts }],
+          generationConfig
+        });
+
+        const response = result.response;
+        const text = response.text();
+
+        appendMessage(text, "bot");
+      } catch (error) {
+        console.error(error);
+        appendMessage("Error! Unable to respond.", "bot");
+      }
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virtual Study Room - Login & Registration</title>
+    <style>
+        /* Google Font */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, rgba(0, 247, 255, 0.689), white);
+            flex-direction: column;
+        }
+
+        .header {
+            font-size: 24px;
+            font-weight: 600;
+            color: black;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .container {
+            width: 350px;
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.164);
+        }
+
+        .form-box {
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            color: #333333e7;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .toggle-link {
+            margin-top: 10px;
+            font-size: 14px;
+        }
+
+        .toggle-link a {
+            color: rgba(255, 47, 0, 0.954);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .toggle-link a:hover {
+            text-decoration: underline;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 10px;
+            background: #814ba2e2;
+            border: none;
+            color: white;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .btn:hover {
+            background: #733e8be5;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">Virtual Study Room</div>
+
+    <div class="container">
+        <div class="form-box">
+            <h2 id="title">Login</h2>
+            <form>
+                <div class="input-group">
+                    <input type="text" id="getElementByIdmail" placeholder="Email" required>
+                </div>
+                <div class="input-group">
+                    <input type="password" id="password" placeholder="Password" required>
+                </div>
+                <div class="toggle-link">
+                    <p id="toggleText">Don't have an account? <a href="#" onclick="toggleForm()">Register</a></p>
+                </div>
+                <button type="submit" class="btn">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function toggleForm() {
+            let title = document.getElementById("title");
+            let toggleText = document.getElementById("toggleText");
+
+            if (title.innerText === "Login") {
+                title.innerText = "Register";
+                toggleText.innerHTML = 'Already have an account? <a href="#" onclick="toggleForm()">Login</a>';
+            } else {
+                title.innerText = "Login";
+                toggleText.innerHTML = 'Don\'t have an account? <a href="#" onclick="toggleForm()">Register</a>';
+            }
+        }
+    </script>
+</body>
+</html>
